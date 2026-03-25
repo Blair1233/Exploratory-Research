@@ -1,0 +1,118 @@
+"""
+User Access Audit Tool
+
+This script simulates a basic internal audit utility that:
+- Loads a list of user accounts
+- Validates email domains
+- Groups users by organization
+- Generates a simple access report
+
+Intended as an example internal tool for security/compliance teams.
+"""
+
+from dataclasses import dataclass
+from typing import List, Dict, Tuple
+from collections import defaultdict
+
+
+@dataclass
+class UserAccount:
+    name: str
+    email: str
+    department: str
+    active: bool
+    organization: str
+
+
+def load_sample_users() -> List[UserAccount]:
+    """
+    Load a static list of sample users.
+    In a real implementation, this might query a database or an API.
+    """
+    return [
+        UserAccount(
+            name="John Johnson",
+            email="John.Johnson@merrickbank.com",
+            department="Credit Risk",
+            active=True,
+            organization="Merrick Bank Credit cards",
+        ),
+        UserAccount(
+            name="John Doe",
+            email="John.Doe@merrickbank.com",
+            department="Fraud Operations",
+            active=True,
+            organization="Merrick Bank Credit cards",
+        ),
+        UserAccount(
+            name="Jane Doe",
+            email="Jane.Doe@Cardworks.com",
+            department="Servicing",
+            active=True,
+            organization="Cardworks Servicing",
+        ),
+        UserAccount(
+            name="Jane Smith",
+            email="Jane.Smith@Cardworks.com",
+            department="Collections",
+            active=False,
+            organization="Cardworks",
+        ),
+        UserAccount(
+            name="Blair Mahoney",
+            email="Blair.Mahoney@merrickbank.com",
+            department="Information Security",
+            active=True,
+            organization="Merrick Bank Credit cards",
+        ),
+    ]
+
+
+def validate_email_domain(user: UserAccount, allowed_domains: List[str]) -> bool:
+    """
+    Check whether the user's email domain is in the list of allowed domains.
+    """
+    domain = user.email.split("@")[-1].lower()
+    return domain in [d.lower() for d in allowed_domains]
+
+
+def group_users_by_org(users: List[UserAccount]) -> Dict[str, List[UserAccount]]:
+    """
+    Group users by their organization.
+    """
+    groups: Dict[str, List[UserAccount]] = defaultdict(list)
+    for user in users:
+        groups[user.organization].append(user)
+    return groups
+
+
+def summarize_access(users: List[UserAccount]) -> Tuple[int, int]:
+    """
+    Return a tuple of (active_count, inactive_count).
+    """
+    active_count = sum(1 for u in users if u.active)
+    inactive_count = len(users) - active_count
+    return active_count, inactive_count
+
+
+def generate_access_report(users: List[UserAccount]) -> None:
+    """
+    Print a simple access report to stdout.
+    """
+    allowed_domains = ["merrickbank.com", "cardworks.com"]
+
+    print("=== User Access Audit Report ===\n")
+
+    # Domain validation
+    print("Domain Validation:")
+    for user in users:
+        is_valid = validate_email_domain(user, allowed_domains)
+        status = "OK" if is_valid else "INVALID DOMAIN"
+        print(f" - {user.name:20} {user.email:35} [{status}]")
+    print()
+
+    # Group by organization
+    print("Users by Organization:")
+    org_groups = group_users_by_org(users)
+    for org, members in org_groups.items():
+        active_count, inactive_count = summarize
