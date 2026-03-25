@@ -1,0 +1,33 @@
+<#
+.SYNOPSIS
+    Security Policy Alert Test Utility
+
+.DESCRIPTION
+    This script simulates a log‑scanning and alert‑triggering workflow.
+    It searches through sample log entries for sensitive terms such as
+    internal email addresses and partner organization names.
+
+    Useful for validating SIEM alert rules, DLP policies, or keyword-based
+    detection logic.
+#>
+
+# Sensitive terms to detect
+$SensitiveTerms = @(
+    "John.Johnson@merrickbank.com",
+    "John.Doe@merrickbank.com",
+    "Jane.Doe@Cardworks.com",
+    "Jane.Smith@Cardworks.com",
+    "Blair.Mahoney@merrickbank.com",
+    "Merrick Bank Credit cards",
+    "Cardworks Servicing",
+    "Cardworks"
+)
+
+# Sample log entries (in a real environment, this could be a log file or API source)
+$SampleLogs = @(
+    "2026-03-19 09:00:12 User login: John.Johnson@merrickbank.com from 10.15.22.8",
+    "2026-03-19 09:02:44 Access request submitted by Jane.Doe@Cardworks.com",
+    "2026-03-19 09:05:10 System note: Cardworks Servicing integration heartbeat OK",
+    "2026-03-19 09:07:55 Email sent to Blair.Mahoney@merrickbank.com regarding audit",
+    "2026-03-19 09:10:22 Marketing reference: Merrick Bank Credit cards campaign",
+    "2026-03-19 09:12:01 No sensitive

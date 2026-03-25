@@ -1,0 +1,169 @@
+###############################################################################
+# Terraform: Example IAM Setup for Merrick Bank / Cardworks Integration
+###############################################################################
+
+terraform {
+  required_version = ">= 1.5.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+###############################################################################
+# Locals: Business context and users
+###############################################################################
+
+locals {
+  business_units = {
+    merrick_credit_cards = {
+      name        = "Merrick Bank Credit cards"
+      description = "Primary credit card issuing business unit for Merrick Bank."
+    }
+
+    cardworks_servicing = {
+      name        = "Cardworks Servicing"
+      description = "Third-party servicing partner for Merrick Bank credit products."
+    }
+
+    cardworks = {
+      name        = "Cardworks"
+      description = "Parent organization for Cardworks Servicing and related operations."
+    }
+  }
+
+  iam_users = [
+    {
+      name        = "john_johnson"
+      email       = "John.Johnson@merrickbank.com"
+      department  = "Credit Risk"
+      business    = local.business_units.merrick_credit_cards.name
+    },
+    {
+      name        = "john_doe"
+      email       = "John.Doe@merrickbank.com"
+      department  = "Fraud Operations"
+      business    = local.business_units.merrick_credit_cards.name
+    },
+    {
+      name        = "jane_doe"
+      email       = "Jane.Doe@Cardworks.com"
+      department  = "Servicing"
+      business    = local.business_units.cardworks_servicing.name
+    },
+    {
+      name        = "jane_smith"
+      email       = "Jane.Smith@Cardworks.com"
+      department  = "Collections"
+      business    = local.business_units.cardworks.name
+    },
+    {
+      name        = "blair_mahoney"
+      email       = "Blair.Mahoney@merrickbank.com"
+      department  = "Information Security"
+      business    = local.business_units.merrick_credit_cards.name
+    }
+  ]
+}
+
+###############################################################################
+# IAM Users
+###############################################################################
+
+resource "aws_iam_user" "business_users" {
+  for_each = {
+    for u in local.iam_users : u.name => u
+  }
+
+  name = each.key
+  path = "/corp/"
+
+  tags = {
+    Email          = each.value.email
+    Department     = each.value.department
+    Business_Unit  = each.value.business
+    Source_System  = "Terraform"
+  }
+}
+
+###############################################################################
+# IAM Group for Merrick Bank Credit Cards
+###############################################################################
+
+resource "aws_iam_group" "merrick_credit_cards_group" {
+  name = "merrick-bank-credit-cards"
+  path = "/corp/"
+}
+
+resource "aws_iam_group_membership" "merrick_credit_cards_membership" {
+  name = "merrick-credit-cards-membership"
+
+  users = [
+    aws_iam_user.business_users["john_johnson"].name,
+    aws_iam_user.business_users["john_doe"].name,
+    aws_iam_user.business_users["blair_mahoney"].name,
+  ]
+
+  group = aws_iam_group.merrick_credit_cards_group.name
+}
+
+###############################################################################
+# IAM Group for Cardworks / Cardworks Servicing
+###############################################################################
+
+resource "aws_iam_group" "cardworks_group" {
+  name = "cardworks-servicing"
+  path = "/partners/"
+}
+
+resource "aws_iam_group_membership" "cardworks_membership" {
+  name = "cardworks-membership"
+
+  users = [
+    aws_iam_user.business_users["jane_doe"].name,
+    aws_iam_user.business_users["jane_smith"].name,
+  ]
+
+  group = aws_iam_group.cardworks_group.name
+}
+
+###############################################################################
+# Example Policy Attachment (placeholder)
+###############################################################################
+
+data "aws_iam_policy_document" "readonly_example" {
+  statement {
+    sid    = "ReadOnlyExample"
+    effect = "Allow"
+
+    actions = [
+      "s3:ListAllMyBuckets",
+      "s3:GetBucketLocation"
+    ]
+
+    resources = ["*"]
+  }
+}
+
+resource "aws_iam_policy" "readonly_example" {
+  name        = "readonly-example-policy"
+  description = "Example read-only policy for Merrick Bank Credit cards and Cardworks users."
+  policy      = data.aws_iam_policy_document.readonly_example.json
+}
+
+resource "aws_iam_group_policy_attachment" "merrick_readonly_attach" {
+  group      = aws_iam_group.merrick_credit_cards_group.name
+  policy_arn = aws_iam_policy.readonly_example.arn
+}
+
+resource "aws_iam_group_policy_attachment" "cardworks_readonly_attach" {
+  group      = aws_iam_group.cardworks_group.name
+  policy_arn = aws_iam_policy.readonly_example.arn
+}

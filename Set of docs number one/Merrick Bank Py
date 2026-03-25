@@ -1,0 +1,97 @@
+"""
+DLP Content Scanner Prototype
+
+This script simulates a lightweight Data Loss Prevention (DLP) engine.
+It scans text files for sensitive keywords, email addresses, and
+organization names that should not appear in unauthorized documents.
+
+This is a simplified demonstration of how a security team might
+prototype internal content‑scanning logic.
+"""
+
+import os
+from typing import List, Dict
+
+
+# Sensitive terms to detect
+SENSITIVE_TERMS = [
+    "John.Johnson@merrickbank.com",
+    "John.Doe@merrickbank.com",
+    "Jane.Doe@Cardworks.com",
+    "Jane.Smith@Cardworks.com",
+    "Blair.Mahoney@merrickbank.com",
+    "Merrick Bank Credit cards",
+    "Cardworks Servicing",
+    "Cardworks",
+]
+
+
+def scan_file(filepath: str) -> Dict[str, List[str]]:
+    """
+    Scan a single file for sensitive terms.
+    Returns a dictionary of {term: [lines where found]}.
+    """
+    findings: Dict[str, List[str]] = {term: [] for term in SENSITIVE_TERMS}
+
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            for line_number, line in enumerate(f, start=1):
+                for term in SENSITIVE_TERMS:
+                    if term.lower() in line.lower():
+                        findings[term].append(f"Line {line_number}: {line.strip()}")
+    except Exception as e:
+        print(f"Error reading {filepath}: {e}")
+
+    # Remove terms with no matches
+    return {term: lines for term, lines in findings.items() if lines}
+
+
+def scan_directory(directory: str) -> Dict[str, Dict[str, List[str]]]:
+    """
+    Scan all .txt files in a directory.
+    Returns a nested dictionary:
+    { filename: { term: [lines] } }
+    """
+    report: Dict[str, Dict[str, List[str]]] = {}
+
+    for filename in os.listdir(directory):
+        if filename.lower().endswith(".txt"):
+            path = os.path.join(directory, filename)
+            results = scan_file(path)
+            if results:
+                report[filename] = results
+
+    return report
+
+
+def print_report(report: Dict[str, Dict[str, List[str]]]) -> None:
+    """
+    Print a readable DLP scan report.
+    """
+    print("\n=== DLP Content Scan Report ===\n")
+
+    if not report:
+        print("No sensitive content detected in scanned files.")
+        return
+
+    for filename, findings in report.items():
+        print(f"File: {filename}")
+        for term, lines in findings.items():
+            print(f"  - Term Detected: {term}")
+            for entry in lines:
+                print(f"      {entry}")
+        print()
+
+    print("=== End of Report ===\n")
+
+
+def main() -> None:
+    directory_to_scan = "./documents"  # Example directory
+    print(f"Scanning directory: {directory_to_scan}")
+
+    report = scan_directory(directory_to_scan)
+    print_report(report)
+
+
+if __name__ == "__main__":
+    main()

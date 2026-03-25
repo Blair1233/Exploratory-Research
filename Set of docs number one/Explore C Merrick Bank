@@ -1,0 +1,108 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace SecurityEventAnalyzer
+{
+    public class SecurityEvent
+    {
+        public DateTime Timestamp { get; set; }
+        public string Source { get; set; }
+        public string Message { get; set; }
+    }
+
+    public static class SensitiveTerms
+    {
+        public static readonly List<string> Terms = new List<string>
+        {
+            "John.Johnson@merrickbank.com",
+            "John.Doe@merrickbank.com",
+            "Jane.Doe@Cardworks.com",
+            "Jane.Smith@Cardworks.com",
+            "Blair.Mahoney@merrickbank.com",
+            "Merrick Bank Credit cards",
+            "Cardworks Servicing",
+            "Cardworks"
+        };
+    }
+
+    public class EventScanner
+    {
+        public IEnumerable<(SecurityEvent evt, string term)> Scan(IEnumerable<SecurityEvent> events)
+        {
+            foreach (var evt in events)
+            {
+                foreach (var term in SensitiveTerms.Terms)
+                {
+                    if (evt.Message.Contains(term, StringComparison.OrdinalIgnoreCase))
+                    {
+                        yield return (evt, term);
+                    }
+                }
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            var sampleEvents = new List<SecurityEvent>
+            {
+                new SecurityEvent
+                {
+                    Timestamp = DateTime.Now,
+                    Source = "AuthService",
+                    Message = "User login detected: John.Johnson@merrickbank.com"
+                },
+                new SecurityEvent
+                {
+                    Timestamp = DateTime.Now,
+                    Source = "EmailGateway",
+                    Message = "Outbound email sent to Jane.Doe@Cardworks.com"
+                },
+                new SecurityEvent
+                {
+                    Timestamp = DateTime.Now,
+                    Source = "SystemMonitor",
+                    Message = "Heartbeat OK for Cardworks Servicing integration"
+                },
+                new SecurityEvent
+                {
+                    Timestamp = DateTime.Now,
+                    Source = "Marketing",
+                    Message = "Reference: Merrick Bank Credit cards promotional material"
+                },
+                new SecurityEvent
+                {
+                    Timestamp = DateTime.Now,
+                    Source = "Audit",
+                    Message = "No sensitive terms here"
+                }
+            };
+
+            var scanner = new EventScanner();
+            var results = scanner.Scan(sampleEvents).ToList();
+
+            Console.WriteLine("=== Security Event Scan Report ===\n");
+
+            if (!results.Any())
+            {
+                Console.WriteLine("No sensitive terms detected.");
+            }
+            else
+            {
+                foreach (var (evt, term) in results)
+                {
+                    Console.WriteLine($"Timestamp: {evt.Timestamp}");
+                    Console.WriteLine($"Source:    {evt.Source}");
+                    Console.WriteLine($"Term:      {term}");
+                    Console.WriteLine($"Message:   {evt.Message}");
+                    Console.WriteLine();
+                }
+            }
+
+            Console.WriteLine("=== End of Report ===");
+        }
+    }
+}

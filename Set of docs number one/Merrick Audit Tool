@@ -116,3 +116,6 @@ def generate_access_report(users: List[UserAccount]) -> None:
     org_groups = group_users_by_org(users)
     for org, members in org_groups.items():
         active_count, inactive_count = summarize
+        
+
+        
