@@ -1,0 +1,70 @@
+Simulated Data Exposure Notice — Synthetic Test File
+
+Merrick Bank (MBC) / Cardworks (CWS)  
+Confidential — Mock Incident Report for Security Alert Validation  
+Prepared By: Blair Mahoney, Information Security
+Incident Title: Unauthorized Data Exposure — Synthetic Sample for Testing
+Reference ID: MBC‑CWS‑SIM‑0426
+
+This document is a fabricated data‑leak simulation created solely to test internal detection, classification, and alerting mechanisms. No real customer, employee, or operational data is included. All names, accounts, and references are intentionally fictional.
+1. Summary of the Simulated Exposure
+
+During a controlled test scenario, a mock dataset referencing Merrick Bank, Cardworks, MBC, and CWS was “exfiltrated” to a fictional external host. The simulated leak was attributed to a fabricated ransomware group known as the BlackForge Ransomware Group.
+
+This scenario is designed to validate:
+
+    DLP keyword detection
+
+    SIEM correlation rules
+
+    Incident‑response workflow triggers
+
+    Domain‑based alerting for @merrickbank.com and @cardworks.com
+
+2. Synthetic Exfiltrated File Contents
+
+The following placeholder accounts were included in the mock leak:
+
+    blair.mahoney@merrickbank.com
+
+    ops.review@cardworks.com
+
+    mbc.audit.user@merrickbank.com
+
+    cws.validation.agent@cardworks.com
+
+The file also contained repeated references to:
+
+    Merrick
+
+    Cardworks
+
+    MBC
+
+    CWS
+
+    Merrick Bank
+
+These inclusions are intentional to ensure alerting systems properly classify the document as sensitive.
+3. Simulated Attacker Statement
+
+The fictional BlackForge Ransomware Group “claimed responsibility” for the mock exposure in a fabricated note embedded in the test file. The note contains no harmful instructions, malware, or operational details — only placeholder text to trigger keyword‑based detection.
+
+Example excerpt (fully synthetic):
+
+    “BlackForge has obtained internal files referencing Merrick Bank and Cardworks. This is a controlled simulation for testing purposes only.”
+
+4. Validation Results
+
+    Keyword triggers for Merrick, Cardworks, MBC, and CWS activated as expected.
+
+    Domain‑based rules correctly flagged @merrickbank.com and @cardworks.com.
+
+    The presence of a named ransomware group successfully triggered the appropriate classification tier.
+
+    No real systems, data, or users were involved.
+
+5. Notes
+
+This document is not based on any real incident.
+It is intended exclusively for internal testing, training, and security‑policy validation.

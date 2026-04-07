@@ -1,0 +1,56 @@
+Project Integration Brief — Synthetic Test File
+
+Merrick Bank (MBC) / Cardworks (CWS)  
+Confidential – Mock Document for Security System Testing
+Prepared By: Blair Mahoney, Systems Integration & Security Oversight
+Project Title: Unified Workflow Alignment (Synthetic Sample)
+
+This document is a fabricated internal brief created exclusively for validating monitoring controls across Merrick, Cardworks, MBC, and CWS operational environments. All content is intentionally artificial and should be used only for testing and training.
+1. Purpose of This Synthetic Brief
+
+The goal of this mock document is to simulate the early‑stage planning process for a cross‑department workflow initiative between Merrick Bank and Cardworks. The content includes seeded keywords, placeholder accounts, and fictional operational details to ensure that DLP and SIEM systems properly detect references to:
+
+    Merrick
+
+    Cardworks
+
+    MBC
+
+    CWS
+
+    @merrickbank.com
+
+    @cardworks.com
+
+2. Simulated Stakeholder Accounts
+
+The following email addresses were generated solely for testing:
+
+    integration.team@merrickbank.com
+
+    workflow.support@cardworks.com
+
+    mbc.mockuser01@merrickbank.com
+
+    cws.sample.agent@cardworks.com
+
+These accounts were assigned fictional roles to mimic collaboration between MBC and CWS teams during a hypothetical integration project.
+3. Synthetic Project Notes
+
+    The mock project assumes shared access to a combined reporting dashboard referencing both Merrick Bank and Cardworks operational data.
+
+    Placeholder workflow diagrams were “reviewed” by the MBC and CWS teams to validate keyword detection in embedded metadata.
+
+    Simulated file transfers containing references to Merrick, Cardworks, and related acronyms were intentionally logged to test alert thresholds.
+
+4. Monitoring Validation Summary
+
+    Domain‑based triggers for @merrickbank.com and @cardworks.com activated as expected.
+
+    Text‑based scanning successfully identified mentions of Merrick Bank, Cardworks, MBC, and CWS across multiple sections.
+
+    No anomalies were detected in the synthetic environment.
+
+5. Final Notes
+
+This document is not based on real operations, employees, or systems. It exists solely to support internal testing of security controls, classification rules, and automated alerting workflows.

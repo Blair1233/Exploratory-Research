@@ -1,0 +1,55 @@
+SYNTHETIC RANSOMWARE LEAK SITE LISTING
+For Internal Security Alert Testing Only
+Group: Black Lantern Collective (Fictional)
+New Listing Added by Black Lantern Collective
+
+Organization: Merrick Bank (MBC) / Cardworks (CWS)
+Status: “Data Package Available” (Synthetic)
+Date Added: 04/07 — Simulation Only
+Overview
+
+The Black Lantern Collective claims to have obtained internal documents referencing Merrick, Cardworks, MBC, CWS, and associated operational materials. This listing is entirely fictional and created solely to test detection of ransomware‑style language, leak‑site formatting, and sensitive keyword triggers.
+
+No real data is included.
+Preview of Alleged Files (All Synthetic)
+Code
+
+MerrickBank_Internal_Audit_Notes.txt
+Cardworks_Operations_Report_Sample.pdf
+mbc_user_access_mock.csv
+cws_employee_reference_list_test.xlsx
+emails_merrickbank.com_placeholder_dump.txt
+emails_cardworks.com_placeholder_dump.txt
+
+These filenames contain no actual content beyond placeholder text designed to activate alerting rules.
+Excerpt from the Fictional “Leak” Message
+
+    “Black Lantern Collective announces the release of internal materials from Merrick Bank and Cardworks. Sample entries include synthetic emails such as blair.mahoney@merrickbank.com and ops.validation@cardworks.com. Full package is staged for review.”
+
+This excerpt is intentionally crafted to resemble threat‑actor language without containing harmful details.
+Included Keywords for Alert Validation
+
+    Merrick
+
+    Cardworks
+
+    Merrick Bank
+
+    MBC
+
+    CWS
+
+    @merrickbank.com
+
+    @cardworks.com
+
+    Blair Mahoney
+
+All references are fictional and included solely to test classification and detection systems.
+Security Testing Notes
+
+    This listing is not associated with any real ransomware activity.
+
+    No real systems, accounts, or data were accessed or exposed.
+
+    This file is intended only for internal DLP, SIEM, and IR workflow validation.

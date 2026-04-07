@@ -1,0 +1,133 @@
+1. FULL SYNTHETIC “DUMP” TEXT BLOCK WITH PAYMENT DEMAND
+Code
+
+===============================
+FIN7 LEAK SITE — VICTIM LISTING
+Synthetic Data Package Only
+===============================
+
+Target: Merrick Bank (MBC) / Cardworks (CWS)
+Keywords: Merrick, Cardworks, Merrick Bank, MBC, CWS,
+@merrickbank.com, @cardworks.com, Blair Mahoney
+
+Status: Payment Requested (Fictional Scenario)
+
+--------------------------------
+SAMPLE DATA (FAKE CONTENT ONLY)
+--------------------------------
+blair.mahoney@merrickbank.com
+ops.review@cardworks.com
+mbc.audit.user@merrickbank.com
+cws.validation.agent@cardworks.com
+
+MBC Access Tier: MBC-INT-004
+CWS Access Tier: CWS-SRV-002
+
+--------------------------------
+FIN7 MESSAGE (SYNTHETIC)
+--------------------------------
+"We have posted a preview of internal materials referencing
+Merrick Bank and Cardworks. This is a controlled simulation.
+To prevent the fictional 'full package' from being released,
+the organization is instructed to respond through the designated
+contact channel in this test scenario."
+
+--------------------------------
+PAYMENT SECTION (FAKE)
+--------------------------------
+Amount Requested: 500,000 (Test Value Only)
+Currency: Placeholder
+Deadline: 72 hours (Synthetic)
+
+Note: This section exists ONLY to test alerting behavior.
+No real payment, threat, or demand exists.
+
+===============================
+END OF SYNTHETIC DUMP
+===============================
+
+2. MOCK DIRECTORY TREE WITH PAYMENT NOTICE FILE
+Code
+
+/FIN7_Merrick_Cardworks_Listing/
+│
+├── Preview/
+│   ├── merrickbank.com_email_samples/
+│   │   ├── sample_inbox_dump_01.txt
+│   │   └── sample_inbox_dump_02.txt
+│   ├── cardworks.com_email_samples/
+│   │   ├── ops_support_placeholder.txt
+│   │   └── risk_team_mock.txt
+│   └── synthetic_access_overview.txt
+│
+├── Full_Package_Placeholder/
+│   ├── MBC_Internal_Audit_FAKE.xlsx
+│   ├── CWS_Employee_Sample_FAKE.csv
+│   └── mbc_cws_joint_ops_mock.txt
+│
+└── Payment/
+    ├── payment_instructions_FAKE.txt
+    └── deadline_notice_TEST.txt
+
+3. DARK‑WEB STYLE HTML SNIPPET WITH VICTIM LISTING + PAYMENT DEMAND
+Code
+
+<html>
+<head>
+<title>FIN7 — Victim Listing</title>
+<style>
+body { background:#0b0b0b; color:#e0e0e0; font-family:Courier New; }
+.header { color:#ff4444; font-size:26px; }
+.section { margin-top:20px; }
+.code { background:#1a1a1a; padding:10px; border:1px solid #333; }
+</style>
+</head>
+
+<body>
+<div class="header">FIN7 — NEW VICTIM LISTING</div>
+
+<div class="section">
+<b>Organization:</b> Merrick Bank (MBC) / Cardworks (CWS)<br>
+<b>Status:</b> Payment Requested (Synthetic Scenario)<br>
+<b>Keywords:</b> Merrick, Cardworks, Merrick Bank, MBC, CWS,
+@merrickbank.com, @cardworks.com, Blair Mahoney
+</div>
+
+<div class="section">
+<b>Preview Files:</b>
+<div class="code">
+MBC_Internal_Audit_Notes_FAKE.txt<br>
+CWS_Employee_Sample_FAKE.csv<br>
+merrickbank.com_email_dump_test.txt<br>
+cardworks.com_ops_mock.txt
+</div>
+</div>
+
+<div class="section">
+<b>FIN7 Statement (Synthetic):</b>
+<div class="code">
+"We have posted a preview of internal materials referencing
+Merrick Bank and Cardworks. This is a fictional scenario created
+for testing. The organization may prevent the release of the
+full synthetic package by responding through the designated
+test channel."
+</div>
+</div>
+
+<div class="section">
+<b>Payment Request (Fictional):</b>
+<div class="code">
+Amount: 500,000 (Test Value Only)<br>
+Deadline: 72 hours (Synthetic)<br>
+Instructions: Refer to payment_instructions_FAKE.txt<br>
+Note: This section exists solely for alert testing.
+</div>
+</div>
+
+<div class="section">
+<i>This page is entirely fictional and created for internal
+security alert testing. No real data, threats, or demands exist.</i>
+</div>
+
+</body>
+</html>

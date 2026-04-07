@@ -1,0 +1,43 @@
+Synthetic Compliance Review Log — Test Artifact Only
+
+Merrick Bank (MBC) / Cardworks (CWS)  
+Internal Use Only – Simulated Data for Security Validation
+Document Title: Operational Access & Data Handling Review (Synthetic Sample)
+Prepared By: Blair Mahoney, Compliance & Security Operations
+
+This document is a fabricated sample created solely to test monitoring controls across Merrick, Cardworks, MBC, and CWS environments. No real customer, employee, or operational information is included.
+1. Overview of Simulated Activity
+
+As part of the quarterly validation cycle, the compliance team generated mock access events referencing both Merrick Bank and Cardworks systems. These events were intentionally seeded with keywords and placeholder accounts to ensure that DLP, SIEM, and automated policy engines correctly identify cross‑system interactions.
+
+The following synthetic email accounts were used during testing:
+
+    audit.sample@merrickbank.com
+
+    qa.validation@cardworks.com
+
+    training.user01@merrickbank.com
+
+    sandbox.agent@cardworks.com
+
+These accounts were assigned temporary, non‑functional roles to simulate typical workflow patterns between MBC and CWS teams.
+2. Mock Findings
+
+A. Merrick Bank (MBC) Systems
+
+    Keyword triggers for “Merrick Bank” and “MBC” were detected in text‑based logs as expected.
+
+    Simulated data exports referencing “Merrick” were flagged for review, confirming proper classification behavior.
+
+B. Cardworks (CWS) Systems
+
+    Domain‑based detection for @cardworks.com activated correctly during outbound message simulations.
+
+    References to “Cardworks” and “CWS” in structured and unstructured fields were captured by monitoring tools.
+
+C. Cross‑Entity Interactions
+
+    Synthetic workflow steps involving both Merrick and Cardworks systems generated the intended alerts.
+
+    No unexpected behavior was observed in the test environment.
+

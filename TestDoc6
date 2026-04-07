@@ -1,0 +1,134 @@
+1. FULL DUMP TEXT BLOCK (Synthetic “Leaked Data” Sample)
+Code
+
+===========================
+FIN7 LEAK PACKAGE — SAMPLE
+Synthetic Data Only
+===========================
+
+Organization: Merrick Bank (MBC) / Cardworks (CWS)
+Prepared for: Internal Security Testing
+Keywords Included: Merrick, Cardworks, Merrick Bank, MBC, CWS,
+@merrickbank.com, @cardworks.com, Blair Mahoney
+
+---------------------------
+EMAIL DIRECTORY (FAKE)
+---------------------------
+blair.mahoney@merrickbank.com
+risk.review@cardworks.com
+mbc.audit.user01@merrickbank.com
+cws.operations.agent@cardworks.com
+
+---------------------------
+EMPLOYEE LIST (FAKE)
+---------------------------
+Name: Blair Mahoney
+Dept: Information Security – MBC
+Status: Synthetic Test Entry
+
+Name: Jordan Ellis
+Dept: Cardworks Servicing – CWS
+Status: Placeholder Only
+
+---------------------------
+SYSTEM EXPORT (FAKE)
+---------------------------
+Merrick Bank Access Tier: MBC-INT-004
+Cardworks Access Tier: CWS-SRV-002
+
+User: test.integration@merrickbank.com
+Role: Mock Analyst
+
+User: qa.validation@cardworks.com
+Role: Synthetic Reviewer
+
+---------------------------
+NOTES
+---------------------------
+This dump is entirely fictional.
+Created to test DLP, SIEM, and IR alerting.
+No real data, credentials, or systems involved.
+===========================
+END OF SYNTHETIC DUMP
+===========================
+
+2. MOCK DIRECTORY TREE (Synthetic “Exfiltrated Files” Layout)
+Code
+
+/FIN7_Merrick_Cardworks_Leak/
+│
+├── MerrickBank/
+│   ├── MBC_Internal_Audit_2026/
+│   │   ├── mbc_access_overview_test.xlsx
+│   │   ├── mbc_user_roles_mock.csv
+│   │   └── blair_mahoney_profile_placeholder.txt
+│   ├── merrickbank.com_email_samples/
+│   │   ├── sample_inbox_dump_01.txt
+│   │   └── sample_inbox_dump_02.txt
+│   └── MBC_Policy_Notes_FAKE.pdf
+│
+├── Cardworks/
+│   ├── CWS_Employee_Sample/
+│   │   ├── cws_directory_mock.csv
+│   │   └── cws_training_accounts.txt
+│   ├── cardworks.com_email_samples/
+│   │   ├── ops_support_placeholder.txt
+│   │   └── risk_team_mock.txt
+│   └── CWS_Operations_FAKE.pdf
+│
+└── Combined/
+    ├── mbc_cws_joint_ops_mock.txt
+    ├── cross_entity_access_review_FAKE.docx
+    └── synthetic_summary_merrick_cardworks.txt
+
+3. DARK‑WEB STYLE HTML SNIPPET (Synthetic Leak‑Site Post)
+Code
+
+<html>
+<head>
+<title>FIN7 — New Data Listing</title>
+<style>
+body { background-color:#0d0d0d; color:#e6e6e6; font-family:Courier New; }
+.header { color:#ff3333; font-size:24px; }
+.section { margin-top:20px; }
+.code { background:#1a1a1a; padding:10px; border:1px solid #333; }
+</style>
+</head>
+
+<body>
+<div class="header">FIN7 — DATA RELEASE NOTICE</div>
+
+<div class="section">
+<b>Target:</b> Merrick Bank (MBC) / Cardworks (CWS)<br>
+<b>Status:</b> Sample Package Posted (Synthetic Only)<br>
+<b>Keywords:</b> Merrick, Cardworks, Merrick Bank, MBC, CWS,
+@merrickbank.com, @cardworks.com, Blair Mahoney
+</div>
+
+<div class="section">
+<b>Preview Files:</b>
+<div class="code">
+MBC_Internal_Audit_Notes_FAKE.txt<br>
+CWS_Employee_Sample_FAKE.csv<br>
+merrickbank.com_email_dump_test.txt<br>
+cardworks.com_ops_mock.txt
+</div>
+</div>
+
+<div class="section">
+<b>FIN7 Statement (Synthetic):</b>
+<div class="code">
+"We have obtained internal materials referencing Merrick Bank and
+Cardworks. Sample entries include synthetic emails such as
+blair.mahoney@merrickbank.com and qa.validation@cardworks.com.
+This listing is for testing and validation only."
+</div>
+</div>
+
+<div class="section">
+<i>This page is entirely fictional and created for internal
+security alert testing. No real data is included.</i>
+</div>
+
+</body>
+</html>
